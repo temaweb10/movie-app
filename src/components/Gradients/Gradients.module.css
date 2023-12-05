@@ -1,0 +1,62 @@
+.gradientPurpleBottom {
+  position: fixed;
+  bottom: 0;
+  left: 18%;
+  width: 25%;
+  height: 83%;
+  background: linear-gradient(rgba(128, 0, 128, 0.5), rgba(128, 0, 128, 0.1));
+  filter: blur(270px);
+  animation: scaleEffect 10s linear infinite;
+}
+.gradientBlueBottom {
+  position: fixed;
+  bottom: 13%;
+  left: 5%;
+  width: 24%;
+  height: 68%;
+  background: linear-gradient(#0db7ff, rgba(128, 0, 128, 0.1));
+  filter: blur(300px);
+  animation: spin 9s linear infinite;
+}
+.gradientBlueTop {
+  position: fixed;
+  top: 25%;
+  right: 15%;
+  width: 24%;
+  height: 68%;
+  background: linear-gradient(#0db7ff, rgba(128, 0, 128, 0.1));
+  filter: blur(300px);
+  animation: scaleEffect 12s linear infinite;
+}
+.gradientPurpleTop {
+  position: fixed;
+  top: 30%;
+  right: 12%;
+  width: 41%;
+  height: 41%;
+  background: linear-gradient(rgba(128, 0, 128, 0.5), rgba(128, 0, 128, 0.1));
+  filter: blur(300px);
+  animation: scaleEffect 12s linear infinite;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes scaleEffect {
+  0% {
+    transform: scale(1.1);
+  }
+  50% {
+    transform: scale(1.4);
+  }
+  100% {
+    transform: scale(1.1);
+  }
+}
+
+.element {
+  animation: scaleEffect 10s infinite;
+}

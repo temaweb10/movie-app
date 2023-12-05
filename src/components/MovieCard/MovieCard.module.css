@@ -1,0 +1,20 @@
+.moviePoster {
+  width: 200px;
+  height: 300px;
+  border-radius: 12px;
+}
+
+.movieCard {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin: 12px;
+  max-width: 200px;
+}
+
+.movieName {
+  font-weight: 600;
+  margin-top: 8px;
+  font-size: 18px;
+  color: #fff;
+}
