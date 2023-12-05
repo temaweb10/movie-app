@@ -8,7 +8,7 @@ function MoviesList({ movies }) {
   return (
     <div className={styles.moviesList}>
       {movies.map((el) => (
-        <Link to={`/test/${el.filmId}`} key={Math.random() + Math.random()}>
+        <Link to={`/movie/${el.filmId}`} key={Math.random() + Math.random()}>
           <MovieCard movie={el} />
         </Link>
       ))}

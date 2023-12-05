@@ -1,8 +1,6 @@
 import React, { useEffect } from "react";
-import { useParams } from "react-router-dom";
-
-const MoviePlayer = () => {
-  let params = useParams();
+import "./MoviePlayer.css";
+const MoviePlayer = ({ idMovie, styles }) => {
   useEffect(() => {
     const script = document.createElement("script");
     script.src = "https://kinobox.tv/kinobox.min.js";
@@ -11,23 +9,18 @@ const MoviePlayer = () => {
     document.body.appendChild(script);
 
     script.onload = () => {
-      const kinobox = new window.Kinobox(".kinobox_player", {
-        search: { kinopoisk: params.idMovie },
+      const kinobox = new window.Kinobox(".kinobox-player", {
+        search: { kinopoisk: idMovie },
       });
       kinobox.init();
     };
 
     return () => {
-      // Очистка ресурсов
       document.body.removeChild(script);
     };
   }, []);
-
-  return (
-    <div>
-      <div className="kinobox_player" style={{ width: "70%" }}></div>
-    </div>
-  );
+  /* ".kinobox_player" */
+  return <div className="kinobox-player"></div>;
 };
 
 export default MoviePlayer;

@@ -3,7 +3,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import Gradients from "../../components/Gradients/Gradients";
 import MoviesList from "../../components/MoviesList/MoviesList";
-import SearchBlock from "../../components/SearchBlock/SearchBlock";
+
 import styles from "../Main/Main.module.css";
 export default function Main() {
   const [query, setQuery] = useState("париж");
