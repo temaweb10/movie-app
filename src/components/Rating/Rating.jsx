@@ -41,7 +41,9 @@ function Rating({ rating }) {
 
   return (
     <div className={styles.ratingBlock} style={{ backgroundColor: colorBlock }}>
-      <span className={styles.ratingNumber}>{rating}</span>
+      <span className={styles.ratingNumber}>
+        {!Number.isNaN(Number(rating)) ? rating : ""}
+      </span>
     </div>
   );
 }

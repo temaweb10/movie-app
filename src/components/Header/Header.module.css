@@ -1,0 +1,21 @@
+.movieAppName {
+  color: #fff;
+  font-size: 1.9rem !important;
+  font-weight: 700 !important;
+  /*  background-image: linear-gradient(
+    90deg,
+    rgba(0, 204, 195, 1) 12%,
+    rgba(0, 186, 204, 1) 88%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: all 0.2s; */
+  font-weight: 800;
+  margin-right: 24px;
+}
+
+.header {
+  background-color: #060c1a !important;
+
+  padding: 10px;
+}

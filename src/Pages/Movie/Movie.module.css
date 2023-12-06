@@ -13,7 +13,6 @@
   max-width: 80%;
   margin: 0 auto;
   display: flex;
-  margin-top: 48px;
 }
 
 .moviePoster {
@@ -78,11 +77,30 @@
   max-height: 720px;
 }
 
-.moviePlayerBlock {
-  min-width: 80%;
+.movieBottomPart {
+  max-width: 80%;
   margin: 0 auto;
   display: flex;
   justify-content: center;
+  flex-direction: column;
   padding-top: 64px;
   padding-bottom: 64px;
+}
+
+.moviesBlockTitle {
+  color: #fff;
+  font-size: 38px;
+  font-weight: 600;
+}
+
+.moviesBlock {
+  /*   max-width: 80%; */
+  margin-top: 64px;
+}
+
+.moviesBlockWrapperOnline {
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 32px;
 }
