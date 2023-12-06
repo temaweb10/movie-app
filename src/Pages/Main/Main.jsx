@@ -7,7 +7,7 @@ import Input from "../../components/UI/Input/Input";
 import styles from "../Main/Main.module.css";
 
 export default function Main() {
-  const [query, setQuery] = useState("париж");
+  const [query, setQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [pagesCount, setPagesCount] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
