@@ -3,7 +3,6 @@ import Rating from "../Rating/Rating";
 import styles from "./MovieCard.module.css";
 
 function MovieCard({ movie, haveRating }) {
-  console.log(movie);
   return (
     <div className={styles.movieCard}>
       {haveRating ? <Rating rating={Number(movie.rating)} /> : ""}

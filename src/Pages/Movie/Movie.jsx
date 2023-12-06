@@ -8,6 +8,7 @@ import styles from "./Movie.module.css";
 
 function Movie() {
   const [movieInfo, setMovieInfo] = useState();
+  const [movieImages, setMovieImages] = useState();
   const [similarsMovies, setsimilarsMovies] = useState();
   const [IsLoading, setIsLoading] = useState(false);
   const params = useParams();
@@ -22,8 +23,17 @@ function Movie() {
         },
       }
     );
-    console.log(res.data.data);
     setMovieInfo(res.data.data);
+    const resMovieImages = await axios.get(
+      `https://kinopoiskapiunofficial.tech/api/v2.2/films/${params.idMovie}/images`,
+      {
+        headers: {
+          "X-API-KEY": "fa065cb4-7f83-4cb8-8bf5-230e1060e656",
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    setMovieImages(resMovieImages.data.items[0].imageUrl);
   };
 
   const getSimilarsMovies = async () => {
@@ -39,9 +49,9 @@ function Movie() {
 
     setsimilarsMovies(res.data.items);
     setIsLoading(true);
-    /*  setMovieInfo(res.data.data);
-    setIsLoading(true); */
   };
+
+  /*   const getMovieImages = async () => {}; */
 
   useEffect(() => {
     getInfoMovie();
@@ -52,7 +62,7 @@ function Movie() {
       className={styles.movie}
       style={
         IsLoading
-          ? { alignItems: "start", marginTop: "50px" }
+          ? { alignItems: "start" }
           : {
               alignItems: "center",
             }
@@ -63,51 +73,61 @@ function Movie() {
       ) : (
         <>
           <div className={styles.movieBlock}>
-            <div className={styles.movieBlockContent}>
-              <div>
-                <img
-                  className={styles.moviePoster}
-                  src={movieInfo?.posterUrl}
-                  alt="Постера нету :*("
-                />
-              </div>
-              <div className={styles.movieAbout}>
-                <span className={styles.movieTitle}>{movieInfo?.nameRu}</span>
-                <div className={styles.blockGenres}>
-                  {movieInfo.genres.map((el) => (
-                    <span className={styles.genre}>{el?.genre}</span>
-                  ))}
+            <div
+              className={styles.movieBlockContentParent}
+              style={{
+                background: ` linear-gradient(
+                  rgba(0, 0, 0, 0.90), 
+                  rgba(0, 0, 0, 0.90)
+                ), url(${movieImages})`,
+              }}
+            >
+              <div className={styles.movieBlockContent}>
+                <div>
+                  <img
+                    className={styles.moviePoster}
+                    src={movieInfo?.posterUrl}
+                    alt="Постера нету :*("
+                  />
                 </div>
-
-                <span className={styles.movieDesc}>
-                  {movieInfo.description}
-                </span>
-
-                <div className={styles.blockAboutSpan}>
-                  <span className={styles.aboutSpan}>Страна:</span>
-                  <span className={styles.aboutSpanT}>
-                    {movieInfo.countries.map((el) => (
-                      <span className={styles.aboutSpanT}>{el?.country}</span>
+                <div className={styles.movieAbout}>
+                  <span className={styles.movieTitle}>{movieInfo?.nameRu}</span>
+                  <div className={styles.blockGenres}>
+                    {movieInfo.genres.map((el) => (
+                      <span className={styles.genre}>{el?.genre}</span>
                     ))}
+                  </div>
+
+                  <span className={styles.movieDesc}>
+                    {movieInfo.description}
                   </span>
-                </div>
-                <div className={styles.blockAboutSpan}>
-                  <span className={styles.aboutSpan}>Премьера в мире:</span>
-                  <span className={styles.aboutSpanT}>
-                    {movieInfo.premiereWorld}
-                  </span>
-                </div>
-                <div className={styles.blockAboutSpan}>
-                  <span className={styles.aboutSpan}>Премьера в России:</span>
-                  <span className={styles.aboutSpanT}>
-                    {movieInfo?.premiereRu}
-                  </span>
-                </div>
-                <div className={styles.blockAboutSpan}>
-                  <span className={styles.aboutSpan}>Продолжительность:</span>
-                  <span className={styles.aboutSpanT}>
-                    {movieInfo?.filmLength}
-                  </span>
+
+                  <div className={styles.blockAboutSpan}>
+                    <span className={styles.aboutSpan}>Страна:</span>
+                    <span className={styles.aboutSpanT}>
+                      {movieInfo.countries.map((el) => (
+                        <span className={styles.aboutSpanT}>{el?.country}</span>
+                      ))}
+                    </span>
+                  </div>
+                  <div className={styles.blockAboutSpan}>
+                    <span className={styles.aboutSpan}>Премьера в мире:</span>
+                    <span className={styles.aboutSpanT}>
+                      {movieInfo.premiereWorld}
+                    </span>
+                  </div>
+                  <div className={styles.blockAboutSpan}>
+                    <span className={styles.aboutSpan}>Премьера в России:</span>
+                    <span className={styles.aboutSpanT}>
+                      {movieInfo?.premiereRu}
+                    </span>
+                  </div>
+                  <div className={styles.blockAboutSpan}>
+                    <span className={styles.aboutSpan}>Продолжительность:</span>
+                    <span className={styles.aboutSpanT}>
+                      {movieInfo?.filmLength}
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>

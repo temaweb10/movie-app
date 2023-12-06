@@ -93,14 +93,16 @@
   font-weight: 600;
 }
 
-.moviesBlock {
-  /*   max-width: 80%; */
-  margin-top: 64px;
-}
-
 .moviesBlockWrapperOnline {
   justify-content: center;
   display: flex;
   flex-wrap: wrap;
   margin-top: 32px;
+}
+
+.movieBlockContentParent {
+  padding: 48px 0px 48px 0px;
+
+  backdrop-filter: brightness(0.1);
+  backdrop-filter: blur(5px); /* применение размытия к фону */
 }
