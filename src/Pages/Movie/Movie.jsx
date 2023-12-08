@@ -33,7 +33,7 @@ function Movie() {
         },
       }
     );
-    setMovieImages(resMovieImages.data.items[0].imageUrl);
+    setMovieImages(resMovieImages?.data?.items[0]?.imageUrl);
   };
 
   const getSimilarsMovies = async () => {
@@ -93,19 +93,19 @@ function Movie() {
                 <div className={styles.movieAbout}>
                   <span className={styles.movieTitle}>{movieInfo?.nameRu}</span>
                   <div className={styles.blockGenres}>
-                    {movieInfo.genres.map((el) => (
+                    {movieInfo?.genres.map((el) => (
                       <span className={styles.genre}>{el?.genre}</span>
                     ))}
                   </div>
 
                   <span className={styles.movieDesc}>
-                    {movieInfo.description}
+                    {movieInfo?.description}
                   </span>
 
                   <div className={styles.blockAboutSpan}>
                     <span className={styles.aboutSpan}>Страна:</span>
                     <span className={styles.aboutSpanT}>
-                      {movieInfo.countries.map((el) => (
+                      {movieInfo?.countries.map((el) => (
                         <span className={styles.aboutSpanT}>{el?.country}</span>
                       ))}
                     </span>
@@ -113,7 +113,7 @@ function Movie() {
                   <div className={styles.blockAboutSpan}>
                     <span className={styles.aboutSpan}>Премьера в мире:</span>
                     <span className={styles.aboutSpanT}>
-                      {movieInfo.premiereWorld}
+                      {movieInfo?.premiereWorld}
                     </span>
                   </div>
                   <div className={styles.blockAboutSpan}>
@@ -138,21 +138,27 @@ function Movie() {
                 styles={styles.moviePlayer}
               />
 
-              <div className={styles.moviesBlock}>
-                <span className={styles.moviesBlockTitle}>Похожие фильмы</span>
+              {similarsMovies.length ? (
+                <div className={styles.moviesBlock}>
+                  <span className={styles.moviesBlockTitle}>
+                    Похожие фильмы
+                  </span>
 
-                <div className={styles.moviesBlockWrapperOnline}>
-                  {similarsMovies.map((el) => (
-                    <Link to={"/movie/" + el?.filmId}>
-                      <MovieCard
-                        haveRating={false}
-                        movie={el}
-                        key={Math.random() + Math.random()}
-                      />
-                    </Link>
-                  ))}
+                  <div className={styles.moviesBlockWrapperOnline}>
+                    {similarsMovies.map((el) => (
+                      <Link to={"/movie/" + el?.filmId}>
+                        <MovieCard
+                          haveRating={false}
+                          movie={el}
+                          key={Math.random() + Math.random()}
+                        />
+                      </Link>
+                    ))}
+                  </div>
                 </div>
-              </div>
+              ) : (
+                ""
+              )}
             </div>
           </div>
         </>

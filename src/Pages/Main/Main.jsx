@@ -51,7 +51,11 @@ export default function Main() {
 
       {movies.length !== 0 ? (
         <div className={styles.moviesListParent}>
-          <MoviesList movies={movies} haveRating={true} />
+          <MoviesList
+            movies={movies}
+            haveRating={true}
+            idMovieKeyName={"filmId"}
+          />
           <>
             {pagesCount !== 0 && currentPage < pagesCount ? (
               <button

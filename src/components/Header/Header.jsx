@@ -10,31 +10,27 @@ import styles from "./Header.module.css";
 function Header() {
   return (
     <AppBar position="static" className={styles.header}>
-      <Toolbar>
+      <Toolbar className={styles.headerToolBar}>
         {/*Inside the IconButton, we 
             can render various icons*/}
-        <IconButton
-          size="large"
-          edge="start"
-          color="inherit"
-          aria-label="menu"
-          sx={{ mr: 2 }}
-        >
-          {/*This is a simple Menu 
-              Icon wrapped in Icon */}
-        </IconButton>
+
         {/* The Typography component applies 
              default font weights and sizes */}
-        <Link to="/">
-          <Typography
-            className={styles.movieAppName}
-            variant="h6"
-            component="div"
-            sx={{ flexGrow: 1 }}
-          >
-            CINEMAPASHKOV
-          </Typography>
-        </Link>
+        <div style={{ display: "flex", alignItems: "center" }}>
+          <Link to="/" className={styles.movieAppNameLink}>
+            <Typography
+              className={styles.movieAppName}
+              variant="h6"
+              component="div"
+              sx={{ flexGrow: 1 }}
+            >
+              CINEMAPASHKOV
+            </Typography>
+          </Link>
+          <Link to="/category/movie/popular">
+            <span className={styles.headerLinkText}>Новинки</span>
+          </Link>
+        </div>
       </Toolbar>
     </AppBar>
   );

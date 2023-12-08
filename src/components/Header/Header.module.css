@@ -19,3 +19,28 @@
 
   padding: 10px;
 }
+
+.headerLinkText {
+  background: rgb(13, 183, 255);
+  background: radial-gradient(
+    circle,
+    rgba(13, 183, 255, 1) 42%,
+    rgba(0, 114, 255, 1) 64%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+  font-size: 21px;
+}
+
+.headerToolBar {
+  display: flex;
+  min-width: 90%;
+  margin: 0 auto;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.movieAppNameLink {
+  margin-right: 32px;
+}

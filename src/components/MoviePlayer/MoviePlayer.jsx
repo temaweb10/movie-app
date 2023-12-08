@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import "./MoviePlayer.css";
-const MoviePlayer = ({ idMovie, styles }) => {
+const MoviePlayer = ({ idMovie }) => {
   useEffect(() => {
     const script = document.createElement("script");
     script.src = "https://kinobox.tv/kinobox.min.js";
