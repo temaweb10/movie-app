@@ -5,6 +5,7 @@
   height: 100vh;
 }
 .movieBlock {
+  width: 100%;
   display: flex;
   flex-direction: column;
 }
@@ -84,6 +85,7 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
+  align-items: center;
   padding-top: 64px;
   padding-bottom: 64px;
 }

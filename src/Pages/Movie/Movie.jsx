@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import Loading from "../../components/Loading/Loading";
 import MovieCard from "../../components/MovieCard/MovieCard";
 import MoviePlayer from "../../components/MoviePlayer/MoviePlayer";
@@ -12,6 +12,7 @@ function Movie() {
   const [similarsMovies, setsimilarsMovies] = useState();
   const [IsLoading, setIsLoading] = useState(false);
   const params = useParams();
+  const navigate = useNavigate();
 
   const getInfoMovie = async () => {
     const res = await axios.get(
@@ -133,10 +134,7 @@ function Movie() {
             </div>
 
             <div className={styles.movieBottomPart}>
-              <MoviePlayer
-                idMovie={params?.idMovie}
-                styles={styles.moviePlayer}
-              />
+              <MoviePlayer idMovie={params?.idMovie} />
 
               {similarsMovies.length ? (
                 <div className={styles.moviesBlock}>
@@ -146,13 +144,15 @@ function Movie() {
 
                   <div className={styles.moviesBlockWrapperOnline}>
                     {similarsMovies.map((el) => (
-                      <Link to={"/movie/" + el?.filmId}>
-                        <MovieCard
-                          haveRating={false}
-                          movie={el}
-                          key={Math.random() + Math.random()}
-                        />
-                      </Link>
+                      <div
+                        onClick={() => {
+                          navigate("/movie/" + el?.filmId);
+                          window.location.reload();
+                        }}
+                        key={Math.random() + Math.random()}
+                      >
+                        <MovieCard haveRating={false} movie={el} />
+                      </div>
                     ))}
                   </div>
                 </div>
