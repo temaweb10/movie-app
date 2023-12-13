@@ -32,6 +32,14 @@
   font-weight: 700;
   font-size: 32px;
 }
+.movieAge {
+  color: #fff;
+  font-weight: 700;
+  border: 1px solid #fff;
+  border-radius: 12px;
+  padding: 4px 8px;
+  font-size: 24px;
+}
 
 .movieDesc {
   color: #fff;

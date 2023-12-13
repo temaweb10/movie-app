@@ -1,0 +1,22 @@
+.gallery {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.swiper {
+  margin-bottom: 32px;
+  margin-top: 12px;
+}
+
+.galleryMovies {
+  display: flex;
+  overflow-x: auto;
+  width: 100%;
+}
+
+.galleryTitle {
+  color: #fff;
+  font-size: 2.3rem;
+  font-weight: 600;
+}

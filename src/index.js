@@ -13,6 +13,7 @@ import MovieCategory from "./Pages/MovieCategory/MovieCategory";
 import Header from "./components/Header/Header";
 import MoviePlayer from "./components/MoviePlayer/MoviePlayer";
 import NotFound404 from "./components/NotFound404/NotFound404";
+import Test from "./components/Test";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -52,6 +53,14 @@ const router = createBrowserRouter([
             "https://kinopoiskapiunofficial.tech/api/v2.2/films/collections?type=TOP_POPULAR_ALL"
           }
         />
+      </>
+    ),
+  },
+  {
+    path: "/test",
+    element: (
+      <>
+        <Test></Test>
       </>
     ),
   },

@@ -1,9 +1,11 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
+import HaveIs from "../../components/HaveIs/HaveIs";
 import Loading from "../../components/Loading/Loading";
 import MovieCard from "../../components/MovieCard/MovieCard";
 import MoviePlayer from "../../components/MoviePlayer/MoviePlayer";
+import Rating from "../../components/Rating/Rating";
 import styles from "./Movie.module.css";
 
 function Movie() {
@@ -16,7 +18,7 @@ function Movie() {
 
   const getInfoMovie = async () => {
     const res = await axios.get(
-      `https://kinopoiskapiunofficial.tech/api/v2.1/films/${params.idMovie}`,
+      `https://api.movielab.media/api/v1/movies/${params.idMovie}`,
       {
         headers: {
           "X-API-KEY": "fa065cb4-7f83-4cb8-8bf5-230e1060e656",
@@ -24,7 +26,8 @@ function Movie() {
         },
       }
     );
-    setMovieInfo(res.data.data);
+    console.log(res.data.result);
+    setMovieInfo(res.data.result);
     const resMovieImages = await axios.get(
       `https://kinopoiskapiunofficial.tech/api/v2.2/films/${params.idMovie}/images`,
       {
@@ -84,18 +87,34 @@ function Movie() {
               }}
             >
               <div className={styles.movieBlockContent}>
-                <div>
+                <div style={{ position: "relative" }}>
                   <img
                     className={styles.moviePoster}
-                    src={movieInfo?.posterUrl}
+                    src={movieInfo?.poster}
                     alt="Постера нету :*("
+                  />
+                  <Rating
+                    rating={movieInfo?.ratings.kinopoisk.rating}
+                    fontSize="24px"
                   />
                 </div>
                 <div className={styles.movieAbout}>
-                  <span className={styles.movieTitle}>{movieInfo?.nameRu}</span>
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                      alignItems: "center",
+                    }}
+                  >
+                    <span className={styles.movieTitle}>
+                      {movieInfo?.title_ru}
+                    </span>
+                    <span className={styles.movieAge}>{movieInfo?.age}+</span>
+                  </div>
+
                   <div className={styles.blockGenres}>
                     {movieInfo?.genres.map((el) => (
-                      <span className={styles.genre}>{el?.genre}</span>
+                      <span className={styles.genre}>{el?.name}</span>
                     ))}
                   </div>
 
@@ -107,26 +126,19 @@ function Movie() {
                     <span className={styles.aboutSpan}>Страна:</span>
                     <span className={styles.aboutSpanT}>
                       {movieInfo?.countries.map((el) => (
-                        <span className={styles.aboutSpanT}>{el?.country}</span>
+                        <span className={styles.aboutSpanT}>{el?.name}</span>
                       ))}
                     </span>
                   </div>
                   <div className={styles.blockAboutSpan}>
                     <span className={styles.aboutSpan}>Премьера в мире:</span>
-                    <span className={styles.aboutSpanT}>
-                      {movieInfo?.premiereWorld}
-                    </span>
+                    <span className={styles.aboutSpanT}>{movieInfo?.year}</span>
                   </div>
-                  <div className={styles.blockAboutSpan}>
-                    <span className={styles.aboutSpan}>Премьера в России:</span>
-                    <span className={styles.aboutSpanT}>
-                      {movieInfo?.premiereRu}
-                    </span>
-                  </div>
+
                   <div className={styles.blockAboutSpan}>
                     <span className={styles.aboutSpan}>Продолжительность:</span>
                     <span className={styles.aboutSpanT}>
-                      {movieInfo?.filmLength}
+                      {movieInfo?.duration} минут
                     </span>
                   </div>
                 </div>
@@ -136,22 +148,22 @@ function Movie() {
             <div className={styles.movieBottomPart}>
               <MoviePlayer idMovie={params?.idMovie} />
 
-              {similarsMovies.length ? (
+              {movieInfo?.similar_movies.length ? (
                 <div className={styles.moviesBlock}>
                   <span className={styles.moviesBlockTitle}>
                     Похожие фильмы
                   </span>
 
                   <div className={styles.moviesBlockWrapperOnline}>
-                    {similarsMovies.map((el) => (
+                    {movieInfo?.similar_movies?.map((el) => (
                       <div
                         onClick={() => {
-                          navigate("/movie/" + el?.filmId);
+                          navigate("/movie/" + el?.kinopoisk_id);
                           window.location.reload();
                         }}
                         key={Math.random() + Math.random()}
                       >
-                        <MovieCard haveRating={false} movie={el} />
+                        <MovieCard haveRating={true} movie={el} />
                       </div>
                     ))}
                   </div>

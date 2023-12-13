@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./Rating.module.css";
-function Rating({ rating }) {
+function Rating({ rating, fontSize }) {
   let colorBlock;
 
   switch (true) {
@@ -41,7 +41,10 @@ function Rating({ rating }) {
 
   return (
     <div className={styles.ratingBlock} style={{ backgroundColor: colorBlock }}>
-      <span className={styles.ratingNumber}>
+      <span
+        className={styles.ratingNumber}
+        style={fontSize !== undefined ? { fontSize: fontSize } : {}}
+      >
         {!Number.isNaN(Number(rating)) ? rating : ""}
       </span>
     </div>

@@ -7,8 +7,8 @@ function MovieCard({ movie, haveRating }) {
     <div className={styles.movieCard}>
       {haveRating ? <Rating rating={Number(movie.rating)} /> : ""}
 
-      <img className={styles.moviePoster} src={movie.posterUrlPreview} />
-      <span className={styles.movieName}>{movie.nameRu}</span>
+      <img className={styles.moviePoster} src={movie.poster} />
+      <span className={styles.movieName}>{movie.title_ru}</span>
     </div>
   );
 }

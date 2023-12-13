@@ -1,5 +1,5 @@
 .mainContent {
-  max-width: 1420px;
+  max-width: 1920px;
   margin: 0px auto 0;
   padding: 12px 0;
 }
@@ -10,6 +10,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  /*   height: 80vh; */
 }
 
 .MainSearchBlock {

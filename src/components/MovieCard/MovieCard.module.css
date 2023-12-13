@@ -1,15 +1,20 @@
 .moviePoster {
-  width: 200px;
-  height: 300px;
+  max-width: 100%;
   border-radius: 12px;
 }
 
 .movieCard {
+  min-width: 200px;
+  min-height: 300px;
   display: flex;
   flex-direction: column;
   position: relative;
   margin: 12px;
   max-width: 200px;
+}
+
+.movieCard:hover {
+  cursor: pointer;
 }
 
 .movieName {
