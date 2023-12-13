@@ -148,7 +148,7 @@ function Movie() {
             <div className={styles.movieBottomPart}>
               <MoviePlayer idMovie={params?.idMovie} />
 
-              {movieInfo?.similar_movies.length ? (
+              {movieInfo?.similar_movies?.length !== 0 && undefined ? (
                 <div className={styles.moviesBlock}>
                   <span className={styles.moviesBlockTitle}>
                     Похожие фильмы
