@@ -19,7 +19,7 @@ function GalleryMovie({ movies, title }) {
         // install Swiper modules
         modules={[Navigation, Pagination, Scrollbar, A11y]}
         spaceBetween={1}
-        slidesPerView={8}
+        slidesPerView={6}
         navigation
         scrollbar={{ draggable: true }}
         onSwiper={(swiper) => console.log(swiper)}
