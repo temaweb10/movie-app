@@ -36,6 +36,7 @@ export default function Main() {
       }
     >
       <div className={styles.mainContent}>
+        {console.log(allCategories)}
         {isLoading ? (
           allCategories.result.full.map((category) => (
             <GalleryMovie title={category.name} movies={category.movies} />
