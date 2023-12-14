@@ -17,30 +17,32 @@ function Movie() {
   const navigate = useNavigate();
 
   const getInfoMovie = async () => {
-    const res = await axios.get(
-      `https://api.movielab.media/api/v1/movies/${params.idMovie}`,
-      {
+    const res = await axios
+      .get(`https://api.movielab.media/api/v1/movies/${params.idMovie}`, {
         headers: {
           "X-API-KEY": "fa065cb4-7f83-4cb8-8bf5-230e1060e656",
           "Content-Type": "application/json",
         },
-      }
-    );
+      })
+      .catch((err) => console.log(err));
     console.log(res.data.result);
     setMovieInfo(res.data.result);
-    const resMovieImages = await axios.get(
-      `https://kinopoiskapiunofficial.tech/api/v2.2/films/${params.idMovie}/images`,
-      {
-        headers: {
-          "X-API-KEY": "fa065cb4-7f83-4cb8-8bf5-230e1060e656",
-          "Content-Type": "application/json",
-        },
-      }
-    );
-    setMovieImages(resMovieImages?.data?.items[0]?.imageUrl);
+    /*     const resMovieImages = await axios; */
+    /*     .get(
+        `https://kinopoiskapiunofficial.tech/api/v2.2/films/${params.idMovie}/images`,
+        {
+          headers: {
+            "X-API-KEY": "fa065cb4-7f83-4cb8-8bf5-230e1060e656",
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      .catch((err) => console.log(err));
+    console.log(resMovieImages?.data?.items[0]?.imageUrl);
+    setMovieImages(resMovieImages?.data?.items[0]?.imageUrl); */
   };
 
-  const getSimilarsMovies = async () => {
+  /*  const getSimilarsMovies = async () => {
     const res = await axios.get(
       `https://kinopoiskapiunofficial.tech/api/v2.2/films/${params.idMovie}/similars`,
       {
@@ -53,14 +55,15 @@ function Movie() {
 
     setsimilarsMovies(res.data.items);
     setIsLoading(true);
-  };
+  }; */
 
   /*   const getMovieImages = async () => {}; */
 
   useEffect(() => {
     getInfoMovie();
-    getSimilarsMovies();
-  }, [params.idMovie]);
+    setIsLoading(true);
+    /*     getSimilarsMovies(); */
+  }, []);
   return (
     <div
       className={styles.movie}
@@ -79,12 +82,12 @@ function Movie() {
           <div className={styles.movieBlock}>
             <div
               className={styles.movieBlockContentParent}
-              style={{
+              /* style={{
                 background: ` linear-gradient(
                   rgba(0, 0, 0, 0.90), 
                   rgba(0, 0, 0, 0.90)
                 ), url(${movieImages})`,
-              }}
+              }} */
             >
               <div className={styles.movieBlockContent}>
                 <div style={{ position: "relative" }}>
@@ -114,7 +117,9 @@ function Movie() {
 
                   <div className={styles.blockGenres}>
                     {movieInfo?.genres.map((el) => (
-                      <span className={styles.genre}>{el?.name}</span>
+                      <span key={Math.random()} className={styles.genre}>
+                        {el?.name}
+                      </span>
                     ))}
                   </div>
 
@@ -126,7 +131,9 @@ function Movie() {
                     <span className={styles.aboutSpan}>Страна:</span>
                     <span className={styles.aboutSpanT}>
                       {movieInfo?.countries.map((el) => (
-                        <span className={styles.aboutSpanT}>{el?.name}</span>
+                        <span className={styles.aboutSpanT} key={Math.random()}>
+                          {el?.name}
+                        </span>
                       ))}
                     </span>
                   </div>

@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useMemo, useState } from "react";
+import { useParams } from "react-router-dom";
 import MoviesList from "../../components/MoviesList/MoviesList";
 import styles from "./MovieCategory.module.css";
 
@@ -8,16 +9,20 @@ function MovieCategory({ fetchUrl }) {
   const [pagesCount, setPagesCount] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const [movies, setMovies] = useState([]);
+  const [title, setTitle] = useState();
+  const params = useParams();
   const getMovieByUrl = async () => {
-    const res = await axios.get(`${fetchUrl}&page=${currentPage}`, {
-      headers: {
-        "X-API-KEY": "fa065cb4-7f83-4cb8-8bf5-230e1060e656",
-        "Content-Type": "application/json",
-      },
-    });
-    console.log(res.data);
-    setPagesCount(res.data.totalPages);
-    setMovies([...movies, ...res.data.items]);
+    const res = await axios.get(
+      `https://api.movielab.media/api/v1/catalog/${params.idCategory}?&page=${currentPage}&limit=20`
+    );
+    console.log(res.data.result);
+    /*     setPagesCount(0); */
+    console.log(
+      `https://api.movielab.media/api/v1/catalog/${params.idCategory}?&page=${currentPage}&limit=20`
+    );
+    console.log(res.headers["x-total-count"]);
+    setTitle(res.data.result.name);
+    setMovies([...movies, ...res.data.result.movies]);
     setCurrentPage(currentPage + 1);
   };
 
@@ -27,26 +32,24 @@ function MovieCategory({ fetchUrl }) {
 
   return (
     <div className={styles.Movies}>
-      {movies.length !== 0 ? (
-        <div className={styles.moviesListParent}>
-          <MoviesList
-            movies={movies}
-            haveRating={true}
-            idMovieKeyName={"kinopoiskId"}
-          />
-          <>
-            {pagesCount !== 0 && currentPage < pagesCount ? (
+      <span className={styles.categoryTitle}>{title}</span>
+
+      <div className={styles.moviesListParent}>
+        <MoviesList movies={movies} haveRating={true} />
+        <>
+          {/*  {pagesCount !== 0 && currentPage < pagesCount ? (
               <button className={styles.btnLoadMore} onClick={getMovieByUrl}>
                 Загрузить ещё
               </button>
             ) : (
               ""
-            )}
-          </>
-        </div>
-      ) : (
-        ""
-      )}
+            )} */}
+
+          <button className={styles.btnLoadMore} onClick={getMovieByUrl}>
+            Загрузить ещё
+          </button>
+        </>
+      </div>
     </div>
   );
 }

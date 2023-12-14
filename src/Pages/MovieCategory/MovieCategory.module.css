@@ -4,6 +4,12 @@
   margin-bottom: 50px;
 }
 
+.categoryTitle {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #fff;
+}
+
 /* CSS */
 .btnLoadMore {
   background: #fff;

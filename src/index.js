@@ -11,7 +11,8 @@ import Main from "./Pages/Main/Main";
 import Movie from "./Pages/Movie/Movie";
 import MovieCategory from "./Pages/MovieCategory/MovieCategory";
 import Header from "./components/Header/Header";
-import MoviePlayer from "./components/MoviePlayer/MoviePlayer";
+
+import Search from "./Pages/Search/Search";
 import NotFound404 from "./components/NotFound404/NotFound404";
 import Test from "./components/Test";
 const router = createBrowserRouter([
@@ -31,6 +32,24 @@ const router = createBrowserRouter([
       <>
         <Header />
         <Movie />
+      </>
+    ),
+  },
+  {
+    path: "/category/:idCategory",
+    element: (
+      <>
+        <Header />
+        <MovieCategory />
+      </>
+    ),
+  },
+  {
+    path: "/search/",
+    element: (
+      <>
+        <Header />
+        <Search />
       </>
     ),
   },

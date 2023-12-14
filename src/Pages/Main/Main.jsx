@@ -10,17 +10,27 @@ import styles from "../Main/Main.module.css";
 
 export default function Main() {
   const [isLoading, setIsLoading] = useState(false);
+  const [popularMovies, setPopularMovies] = useState();
+  const [newMovies, setNewMovies] = useState();
 
-  const [allCategories, setAllCategories] = useState([]);
+  const [categories, setCategories] = useState([]);
 
-  const getAllCategories = async () => {
-    let res = await axios.get("https://api.movielab.media/api/v1/catalog");
-    setAllCategories(res.data);
+  const getCategories = async () => {
+    let resNewMovies = await axios.get(
+      "https://api.movielab.media/api/v1/catalog/1?page=1&limit=12"
+    );
+    let resPopularMovies = await axios.get(
+      "https://api.movielab.media/api/v1/catalog/0?page=1&limit=12"
+    );
+
+    /*    setCategories(res.data); */
+    setPopularMovies(resPopularMovies.data.result);
+    setNewMovies(resNewMovies.data.result);
     setIsLoading(true);
   };
 
   useEffect(() => {
-    getAllCategories();
+    getCategories();
   }, []);
 
   return (
@@ -36,12 +46,13 @@ export default function Main() {
       }
     >
       <div className={styles.mainContent}>
-        {console.log(allCategories)}
+        {console.log(newMovies)}
         {isLoading ? (
-          allCategories.result.full.map((category) => (
+          [newMovies, popularMovies].map((category) => (
             <GalleryMovie title={category.name} movies={category.movies} />
           ))
         ) : (
+          /*   <GalleryMovie title={newMovies.name} movies={newMovies.movies} /> */
           <Loading />
         )}
       </div>
