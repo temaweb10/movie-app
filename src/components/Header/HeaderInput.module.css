@@ -1,0 +1,27 @@
+.headerInput {
+  height: 45px;
+  border-radius: 12px;
+  width: 30%;
+  margin-right: 0.8rem;
+  padding-left: 4px;
+}
+
+.headerInput:focus {
+  border: 0px;
+  outline: 0px;
+}
+
+.searchBtn {
+  background-color: #fff;
+  border: 0px;
+  outline: 0px;
+  height: 45px;
+  width: 45px;
+  border-radius: 12px;
+  transition: linear 2s;
+}
+
+.searchBtn:hover {
+  cursor: pointer;
+  scale: 1.09;
+}

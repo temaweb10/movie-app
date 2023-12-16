@@ -49,7 +49,11 @@ export default function Main() {
         {console.log(newMovies)}
         {isLoading ? (
           [newMovies, popularMovies].map((category) => (
-            <GalleryMovie title={category.name} movies={category.movies} />
+            <GalleryMovie
+              title={category.name}
+              movies={category.movies}
+              key={Math.random()}
+            />
           ))
         ) : (
           /*   <GalleryMovie title={newMovies.name} movies={newMovies.movies} /> */

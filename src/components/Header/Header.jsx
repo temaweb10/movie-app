@@ -3,7 +3,8 @@ import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import React from "react";
+import React, { useState } from "react";
+import HeaderInput from "./HeaderInput";
 /* import MenuIcon from "@mui/icons-material/Menu"; */
 import { Link } from "react-router-dom";
 import styles from "./Header.module.css";
@@ -16,7 +17,7 @@ function Header() {
 
         {/* The Typography component applies 
              default font weights and sizes */}
-        <div style={{ display: "flex", alignItems: "center" }}>
+        <div style={{ display: "flex", alignItems: "center", width: "100%" }}>
           <Link to="/" className={styles.movieAppNameLink}>
             <Typography
               className={styles.movieAppName}
@@ -27,9 +28,10 @@ function Header() {
               CINEMAPASHKOV
             </Typography>
           </Link>
-          <Link to="/category/movie/popular">
+          {/*   <Link to="/category/movie/popular">
             <span className={styles.headerLinkText}>Новинки</span>
-          </Link>
+          </Link> */}
+          <HeaderInput />
         </div>
       </Toolbar>
     </AppBar>

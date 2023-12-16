@@ -1,0 +1,10 @@
+.MainSearchBlock {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 0px;
+}
+
+.moviesListParent {
+  padding: 0px 5rem;
+}

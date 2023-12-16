@@ -37,10 +37,18 @@
   display: flex;
   min-width: 90%;
   margin: 0 auto;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
 }
 
 .movieAppNameLink {
   margin-right: 32px;
+}
+
+.headerInput {
+  margin-right: 12px;
+}
+
+.headerInput {
+  height: 40px;
 }
