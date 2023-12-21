@@ -8,7 +8,7 @@ function MoviesList({ movies, haveRating, idMovieKeyName }) {
     <div className={styles.moviesList}>
       {movies.map((el) => (
         <Link
-          to={`/movie-app/movie/${el.kinopoisk_id}`}
+          to={`/movie/${el.kinopoisk_id}`}
           key={Math.random() + Math.random()}
         >
           {console.log(el.kinopoisk_id)}

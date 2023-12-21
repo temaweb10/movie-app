@@ -15,24 +15,16 @@ function App() {
     <Router>
       <Routes>
         <Route
-          path="/movie-app/"
+          path="/"
           element={
             <>
               <Header /> <Main />
             </>
           }
         />
+        <Route path="/movie/:idMovie" element={<Movie />} />
         <Route
-          path="/movie-app/movie/:idMovie"
-          element={
-            <>
-              <Header />
-              <Movie />
-            </>
-          }
-        />
-        <Route
-          path="/movie-app/search/"
+          path="/search/"
           element={
             <>
               <Header />
