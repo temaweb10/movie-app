@@ -165,7 +165,7 @@ function Movie() {
                     {movieInfo?.similar_movies?.map((el) => (
                       <div
                         onClick={() => {
-                          navigate("/movie/" + el?.kinopoisk_id);
+                          navigate("/movie-app/movie/" + el?.kinopoisk_id);
                           window.location.reload();
                         }}
                         key={Math.random() + Math.random()}
