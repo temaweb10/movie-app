@@ -28,19 +28,20 @@ function GalleryMovie({ movies, title }) {
         className={styles.swiper}
       >
         {movies?.map((el) => (
-          <Link
-            to={`/movie/${el.kinopoisk_id}`}
+          <SwiperSlide
             key={Math.random() + Math.random()}
-          >
-            <SwiperSlide
             /*  onClick={() => {
               navigate("/movie/" + el?.kinopoisk_id);
               window.location.reload();
             }} */
+          >
+            <Link
+              to={`/movie/${el.kinopoisk_id}`}
+              key={Math.random() + Math.random()}
             >
               <MovieCard haveRating={true} movie={el} />
-            </SwiperSlide>
-          </Link>
+            </Link>
+          </SwiperSlide>
         ))}
       </Swiper>
 
