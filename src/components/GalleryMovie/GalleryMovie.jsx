@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { A11y, Navigation, Pagination, Scrollbar } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import MovieCard from "../MovieCard/MovieCard";
@@ -9,6 +9,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
+
 function GalleryMovie({ movies, title }) {
   console.log(styles.galleryMovies);
   const navigate = useNavigate();
@@ -27,15 +28,19 @@ function GalleryMovie({ movies, title }) {
         className={styles.swiper}
       >
         {movies?.map((el) => (
-          <SwiperSlide
-            onClick={() => {
-              navigate("/movie/" + el?.kinopoisk_id);
-              window.location.reload();
-            }}
+          <Link
+            to={`/movie/${el.kinopoisk_id}`}
             key={Math.random() + Math.random()}
           >
-            <MovieCard haveRating={true} movie={el} />
-          </SwiperSlide>
+            <SwiperSlide
+            /*  onClick={() => {
+              navigate("/movie/" + el?.kinopoisk_id);
+              window.location.reload();
+            }} */
+            >
+              <MovieCard haveRating={true} movie={el} />
+            </SwiperSlide>
+          </Link>
         ))}
       </Swiper>
 
