@@ -18,7 +18,7 @@ function Header() {
         {/* The Typography component applies 
              default font weights and sizes */}
         <div style={{ display: "flex", alignItems: "center", width: "100%" }}>
-          <Link to="/movie-app/" className={styles.movieAppNameLink}>
+          <Link to="/" className={styles.movieAppNameLink}>
             <Typography
               className={styles.movieAppName}
               variant="h6"
