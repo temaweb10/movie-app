@@ -20,3 +20,26 @@
   font-size: 2.3rem;
   font-weight: 600;
 }
+
+.horizontalWrapper {
+  position: relative;
+  display: flex;
+
+  margin: 0;
+
+  overflow-y: hidden;
+  overflow-x: scroll;
+  margin-bottom: 34px;
+}
+
+.horizontalWrapper::-webkit-scrollbar {
+  width: 12px; /* ширина scrollbar */
+}
+.horizontalWrapper::-webkit-scrollbar-track {
+  background: red; /* цвет дорожки */
+}
+.horizontalWrapper::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 186, 204, 1); /* цвет плашки */
+  border-radius: 20px; /* закругления плашки */
+  border: 3px solid rgba(0, 204, 195, 1); /* padding вокруг плашки */
+}

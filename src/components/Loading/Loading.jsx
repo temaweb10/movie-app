@@ -4,7 +4,7 @@ import styles from "./Loading.module.css";
 
 function Loading() {
   return (
-    <div style={{ marginBottom: "36px" }}>
+    <div className={styles.loadingDiv}>
       <span className={styles.loadingSpan}>CINEMAPASHKOV</span>
       <span className={styles.loadingSpanAnimaton}>.</span>
       <span className={styles.loadingSpanAnimaton}>.</span>

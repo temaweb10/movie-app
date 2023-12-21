@@ -12,11 +12,23 @@ import "swiper/css/scrollbar";
 
 function GalleryMovie({ movies, title }) {
   console.log(styles.galleryMovies);
-  const navigate = useNavigate();
+
   return (
     <>
       <span className={styles.galleryTitle}>{title}</span>
-      <Swiper
+      <div className={styles.horizontalWrapper}>
+        {movies?.map((el) => (
+          <Link
+            className={styles.horizontalWrapperMovies}
+            to={`/movie/${el.kinopoisk_id}`}
+            key={Math.random() + Math.random()}
+          >
+            <MovieCard haveRating={true} movie={el} />
+          </Link>
+        ))}
+      </div>
+
+      {/*     <Swiper
         // install Swiper modules
         modules={[Navigation, Pagination, Scrollbar, A11y]}
         spaceBetween={1}
@@ -30,10 +42,6 @@ function GalleryMovie({ movies, title }) {
         {movies?.map((el) => (
           <SwiperSlide
             key={Math.random() + Math.random()}
-            /*  onClick={() => {
-              navigate("/movie/" + el?.kinopoisk_id);
-              window.location.reload();
-            }} */
           >
             <Link
               to={`/movie/${el.kinopoisk_id}`}
@@ -44,7 +52,7 @@ function GalleryMovie({ movies, title }) {
           </SwiperSlide>
         ))}
       </Swiper>
-
+ */}
       {/*     <Swiper
       spaceBetween={50}
       slidesPerView={20}
