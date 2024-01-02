@@ -11,7 +11,6 @@ function MoviesList({ movies, haveRating, idMovieKeyName }) {
           to={`/movie/${el.kinopoisk_id}`}
           key={Math.random() + Math.random()}
         >
-          {console.log(el.kinopoisk_id)}
           <MovieCard movie={el} haveRating={haveRating} />
         </Link>
       ))}

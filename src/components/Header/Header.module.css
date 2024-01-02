@@ -15,8 +15,16 @@
 }
 
 .header {
-  background-color: #060c1a !important;
-
+  /* background-color: #060c1a !important;
+ */
+  background: rgba(4, 10, 24, 0.1) !important;
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  position: fixed !important;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 999;
   padding: 10px;
 }
 

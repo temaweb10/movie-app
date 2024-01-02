@@ -9,7 +9,7 @@ import Header from "./components/Header/Header";
 import "./App.css";
 import Search from "./Pages/Search/Search";
 import NotFound404 from "./components/NotFound404/NotFound404";
-
+import PageLayout from "./components/PageLayout/PageLayout";
 function App() {
   return (
     <Router>
@@ -17,35 +17,33 @@ function App() {
         <Route
           path="/"
           element={
-            <>
-              <Header /> <Main />
-            </>
+            <PageLayout>
+              <Main />
+            </PageLayout>
           }
         />
         <Route
           path="/movie/:idMovie"
           element={
-            <>
-              <Header /> <Movie />
-            </>
+            <PageLayout>
+              <Movie />
+            </PageLayout>
           }
         />
         <Route
           path="/search/"
           element={
-            <>
-              <Header />
+            <PageLayout>
               <Search />
-            </>
+            </PageLayout>
           }
         />
         <Route
           path="*"
           element={
-            <>
-              <Header />
+            <PageLayout>
               <NotFound404 />
-            </>
+            </PageLayout>
           }
         />
       </Routes>
